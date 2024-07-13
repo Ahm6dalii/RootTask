@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const userContext = createContext(null)
 
@@ -25,7 +25,24 @@ export default function UserContextProvider({children}){
         setLoading(false)
       });
     }
-return <userContext.Provider value={{userData,userTransactions,getTransactionData,getUserData ,isloading }}>
+    async function getAllUserData() {
+      setLoading(true)
+        await axios.get("https://ahm6dalii.github.io/RootTask/db.json").then(function ({ data }) {
+        console.log(data);
+        let{transactions, customers }= data
+        setUserData(customers);
+        setUserTransactions(transactions);
+        setLoading(false)
+
+
+
+     
+      });
+    }
+    // useEffect(()=>{
+    //   getAllUserData()
+    // },[])
+return <userContext.Provider value={{userData,userTransactions,getTransactionData,getUserData,getAllUserData ,isloading }}>
     {children}
 </userContext.Provider>
 
