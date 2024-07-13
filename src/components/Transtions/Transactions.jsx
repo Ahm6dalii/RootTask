@@ -87,11 +87,11 @@ export default function TransactionsTable() {
     setTransactionSearch(filteredTransactions);
   }
 
-  return (<>
+  return (< >
     {isloading ? <LoadingScreen/> :<div className="max-w-screen-xl m-auto">
     <div className="flex items-center space-x-4 mb-4 mt-5">
       <div className="flex align-content-center">
-        <label className="mr-2">Search by:</label>
+        <label className="mr-2 px-2">Search by:</label>
         <label>
           <input
             type="radio"
@@ -118,7 +118,7 @@ export default function TransactionsTable() {
     </div>
 
     {searchType === "amount" && (
-      <div className="flex align-items-center space-x-4">
+      <div className="flex align-items-center space-x-4 px-2">
         <div>
           <label htmlFor="min-price" className="inline-block w-20">
             Min Price:
@@ -162,7 +162,7 @@ export default function TransactionsTable() {
           type="search"
           id="inp"
           onInput={filterTransactions}
-          className="w-full md:w-[60%] py-2 px-3 border m-2"
+          className=" md:w-[60%] py-2 px-3 border m-2 "
           placeholder="Search by name"
         />
         <button
@@ -174,7 +174,7 @@ export default function TransactionsTable() {
       </>
     )}
 
-    <h1 className="font-bold text-xl py-4 mb-1">User Transaction Table</h1>
+    <h1 className="font-bold text-xl py-4 mb-1 px-2">User Transaction Table</h1>
     <table className="w-full text-center border">
       <thead className="bg-slate-700 text-white text-2xl">
         <tr>
@@ -195,7 +195,7 @@ export default function TransactionsTable() {
       </tbody>
     </table>
 
-    <div className="mt-5">
+    <div className="mt-5 px-2">
       <CustomerTransactionsChart
         customers={userData}
         transactions={userTransactions}
