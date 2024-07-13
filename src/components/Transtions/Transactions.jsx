@@ -5,7 +5,7 @@ import { userContext } from './../../context/uesrContext';
 import LoadingScreen from './../LoadingScreen/LoadingScreen';
 
 export default function TransactionsTable() {
-  const {userData,userTransactions,getTransactionData,getUserData,getAllUserData,isloading  }=useContext(userContext)
+  const {userData,userTransactions,getAllUserData,isloading  }=useContext(userContext)
   const [userWithTransaction, setUserWithTransaction] = useState(null);
   const [transactionSearch, setTransactionSearch] = useState([]);
   const [searchType, setSearchType] = useState("name"); // Default to search by name
