@@ -122,7 +122,7 @@ function CustomerTransactionsChart({ transactions, customers }) {
   return (
     <div>
       <h1>Customer Transactions Graph</h1>
-      <select value={selectedCustomer} onChange={handleCustomerChange}>
+      <select value={selectedCustomer?selectedCustomer:''} onChange={handleCustomerChange}>
         {customers.map(customer => (
           <option key={customer.id} value={customer.id}>
             {customer.name}

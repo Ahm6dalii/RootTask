@@ -6,13 +6,12 @@ export const userContext = createContext(null)
 
 export default function UserContextProvider({children}){ 
   
-  // let[isloading ,setLoading]=useState(true)
-  //   // console.log(children);
-  //   let [userData, setUserData] = useState(null);
-  //   let [userTransactions, setUserTransactions] = useState(null);
+  let[isloading ,setLoading]=useState(true)
+    let [userData, setUserData] = useState(null);
+    let [userTransactions, setUserTransactions] = useState(null);
+
   //   async function getTransactionData() {
   //       await axios.get("http://localhost:3000/transactions").then(function ({ data }) {
-  //       // console.log(data);
   //       setUserTransactions(data);
   //     });
   //   }
@@ -28,7 +27,7 @@ export default function UserContextProvider({children}){
     async function getAllUserData() {
       setLoading(true)
         await axios.get("https://ahm6dalii.github.io/RootTaskDB/db.json").then(function ({ data }) {
-        console.log(data);
+        // console.log(data);
         let{transactions, customers }= data
         setUserData(customers);
         setUserTransactions(transactions);
