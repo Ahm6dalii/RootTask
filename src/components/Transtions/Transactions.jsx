@@ -174,7 +174,7 @@ export default function TransactionsTable() {
       </>
     )}
 
-    <h1 className="font-bold text-xl py-4 mb-1 px-2">User Transaction Table</h1>
+    <h1 className="font-bold text-2xl text-[#334155] py-4 mb-1 px-2 ">User Transaction Table</h1>
     <table className="w-full text-center border">
       <thead className="bg-slate-700 text-white text-2xl">
         <tr>

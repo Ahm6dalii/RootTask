@@ -12,13 +12,15 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
+// Function to filter transactions by customer ID
 function getTransactionsByCustomerId(transactions, customerId) {
   return transactions.filter(transaction => transaction.customer_id === parseInt(customerId));
 }
 
+// Function to aggregate transaction amounts by date
 function getTotalAmountsPerDay(transactions) {
   const totals = {};
-
+  
   transactions.forEach(transaction => {
     if (totals[transaction.date]) {
       totals[transaction.date] += transaction.amount;
@@ -26,13 +28,15 @@ function getTotalAmountsPerDay(transactions) {
       totals[transaction.date] = transaction.amount;
     }
   });
-
+  
   return Object.entries(totals).map(([date, amount]) => ({ date, amount }));
 }
 
+// Main component to display the customer transactions chart
 function CustomerTransactionsChart({ transactions, customers }) {
-  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [selectedCustomer, setSelectedCustomer] = useState('');
 
+  // Set the initial selected customer when customers data is available
   useEffect(() => {
     if (customers && customers.length > 0) {
       setSelectedCustomer(customers[0].id);
@@ -80,7 +84,7 @@ function CustomerTransactionsChart({ transactions, customers }) {
         stacked: false,
         ticks: {
           font: {
-            size: 20// Changed font size for x-axis
+            size: 20 // Changed font size for x-axis
           }
         }
       },
@@ -121,8 +125,7 @@ function CustomerTransactionsChart({ transactions, customers }) {
 
   return (
     <div>
-      <h1>Customer Transactions Graph</h1>
-      <select value={selectedCustomer?selectedCustomer:''} onChange={handleCustomerChange}>
+      <select value={selectedCustomer} onChange={handleCustomerChange}>
         {customers.map(customer => (
           <option key={customer.id} value={customer.id}>
             {customer.name}
